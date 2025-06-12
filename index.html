@@ -64,12 +64,21 @@
             <img src="https://flagcdn.com/w20/cl.png" alt="Chile Flag" class="country-flag mr-2">
             <span class="es">ES</span>
             <span class="zh hidden">西班牙语</span>
+            <span class="en hidden">ES</span>
         </label>
         <input type="radio" id="lang-zh" name="language" value="zh" class="hidden">
         <label for="lang-zh" class="language-selector px-4 py-1 rounded-full cursor-pointer transition-colors flex items-center">
             <img src="https://flagcdn.com/w20/cn.png" alt="China Flag" class="country-flag mr-2">
-            <span class="es">中文</span>
-            <span class="zh hidden">Chino</span>
+            <span class="es">CN</span>
+            <span class="zh hidden">中文</span>
+            <span class="en hidden">ZH</span>
+        </label>
+        <input type="radio" id="lang-en" name="language" value="en" class="hidden">
+        <label for="lang-en" class="language-selector px-4 py-1 rounded-full cursor-pointer transition-colors flex items-center">
+            <img src="https://flagcdn.com/w20/us.png" alt="USA Flag" class="country-flag mr-2">
+            <span class="es">EN</span>
+            <span class="zh hidden">英语</span>
+            <span class="en hidden">EN</span>
         </label>
     </div>
 
@@ -79,26 +88,28 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
-                        <img src="assets/images/logo.ico">
+                        <img src="assets/images/logo.ico" alt="Asia Inversiones Logo">
                     </div>
                     <span class="text-xl font-bold text-primary es">Asia Inversiones</span>
                     <span class="text-xl font-bold text-primary zh hidden">中智商务</span>
+                    <span class="text-xl font-bold text-primary en hidden">Asia Investments</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors es">Inicio</a>
                     <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">首页</a>
-                    
+                    <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">Home</a>
                     <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors es">Nosotros</a>
                     <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">关于我们</a>
-                    
+                    <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">About Us</a>
                     <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors es">Servicios</a>
                     <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">服务</a>
-                    
+                    <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">Services</a>
                     <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium transition-colors es">Testimonios</a>
                     <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">评价</a>
-                    
+                    <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">Testimonials</a>
                     <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors es">Contacto</a>
                     <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">联系</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">Contact</a>
                 </div>
                 <div class="md:hidden">
                     <button id="menu-btn" class="text-gray-700 focus:outline-none">
@@ -107,20 +118,20 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="container mx-auto px-6 py-3 flex flex-col space-y-3">
                 <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors es">Inicio</a>
                 <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">首页</a>
-                
+                <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">Home</a>
                 <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors es">Nosotros</a>
                 <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">关于我们</a>
-                
+                <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">About Us</a>
                 <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors es">Servicios</a>
                 <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">服务</a>
-                
+                <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">Services</a>
                 <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors es">Contacto</a>
                 <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">联系</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors en hidden">Contact</a>
             </div>
         </div>
     </nav>
@@ -131,16 +142,17 @@
             <div class="md:w-1/2 mb-10 md:mb-0">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 es">Puente de negocios entre Chile y China</h1>
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 zh hidden font-chinese">连接智利与中国的商业桥梁</h1>
-                
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 en hidden">Business Bridge between Chile and China</h1>
                 <p class="text-lg mb-8 text-gray-700 es">Especializados en facilitar inversiones y negocios bilaterales, ayudamos a empresas y familias chinas a establecerse en Chile con éxito.</p>
                 <p class="text-lg mb-8 text-gray-700 zh hidden font-chinese">专业促进双边投资与商业 帮助中国企业和家庭在智利成功落户</p>
-                
+                <p class="text-lg mb-8 text-gray-700 en hidden">Specialized in facilitating bilateral investments and businesses, we help Chinese companies and families successfully establish themselves in Chile.</p>
                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                     <a href="#contact" class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg text-center font-medium transition-colors es">Contactar ahora</a>
                     <a href="#contact" class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg text-center font-medium transition-colors zh hidden">立即联系</a>
-                    
+                    <a href="#contact" class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg text-center font-medium transition-colors en hidden">Contact Now</a>
                     <a href="#services" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-lg text-center font-medium border border-primary transition-colors es">Nuestros servicios</a>
                     <a href="#services" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-lg text-center font-medium border border-primary transition-colors zh hidden">我们的服务</a>
+                    <a href="#services" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-lg text-center font-medium border border-primary transition-colors en hidden">Our Services</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
@@ -163,32 +175,35 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 es">Sobre Nosotros</h2>
                 <h2 class="text-3xl font-bold mb-4 zh hidden font-chinese">关于我们</h2>
-                
+                <h2 class="text-3xl font-bold mb-4 en hidden">About Us</h2>
                 <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
                 
                 <p class="max-w-2xl mx-auto text-gray-600 es">Con más de 10 años de experiencia conectando los mercados chileno y chino, ofrecemos soluciones integrales para inversiones y establecimiento en Chile.</p>
                 <p class="max-w-2xl mx-auto text-gray-600 zh hidden font-chinese">拥有10余年连接智利和中国市场的经验 我们为在智利的投资和落户提供全面解决方案</p>
+                <p class="max-w-2xl mx-auto text-gray-600 en hidden">With over 10 years of experience connecting the Chilean and Chinese markets, we offer comprehensive solutions for investments and establishment in Chile.</p>
             </div>
             
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0">
                     <div class="relative overflow-hidden rounded-lg shadow-xl h-80 w-full">
                         <img src="assets/images/team.png" 
-                             alt="Our team" 
-                             class="w-full h-full object-cover">
+                            alt="Our team" 
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
                 <div class="md:w-1/2 md:pl-12">
                     <h3 class="text-2xl font-semibold mb-4 text-gray-800 es">Nuestra experiencia</h3>
                     <h3 class="text-2xl font-semibold mb-4 text-gray-800 zh hidden font-chinese">我们的经验</h3>
-                    
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 en hidden">Our Experience</h3>
                     <p class="mb-6 text-gray-600 es">
                         Somos un equipo binacional con amplio conocimiento tanto del mercado chileno como del chino. Nuestros especialistas en derecho, bienes raíces y comercio internacional le brindarán la mejor asesoría para su proyecto.
                     </p>
                     <p class="mb-6 text-gray-600 zh hidden font-chinese">
                         我们是跨国团队 对智利和中国市场都有深入了解 我们拥有法律 房地产和国际商业方面的专家 为您的项目提供最佳建议
                     </p>
-                    
+                    <p class="mb-6 text-gray-600 en hidden">
+                        We are a binational team with extensive knowledge of both the Chilean and Chinese markets. Our specialists in law, real estate, and international trade will provide you with the best advice for your project.
+                    </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="bg-blue-50 p-4 rounded-lg">
                             <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mb-3">
@@ -196,8 +211,9 @@
                             </div>
                             <h4 class="font-semibold mb-1 es">100+ Proyectos</h4>
                             <h4 class="font-semibold mb-1 zh hidden font-chinese">100+ 项目</h4>
-                            <p class="text-sm text-gray-500 es">Completados con éxito</p>
+                            <h4 class="font-semibold mb-1 en hidden">100+ Projects</h4> <p class="text-sm text-gray-500 es">Completados con éxito</p>
                             <p class="text-sm text-gray-500 zh hidden">成功完成</p>
+                            <p class="text-sm text-gray-500 en hidden">Successfully completed</p>
                         </div>
                         <div class="bg-red-50 p-4 rounded-lg">
                             <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white mb-3">
@@ -205,8 +221,9 @@
                             </div>
                             <h4 class="font-semibold mb-1 es">50+ Clientes</h4>
                             <h4 class="font-semibold mb-1 zh hidden font-chinese">50+ 客户</h4>
-                            <p class="text-sm text-gray-500 es">Empresas y familias</p>
+                            <h4 class="font-semibold mb-1 en hidden">50+ Clients</h4> <p class="text-sm text-gray-500 es">Empresas y familias</p>
                             <p class="text-sm text-gray-500 zh hidden">企业和家庭</p>
+                            <p class="text-sm text-sm text-gray-500 en hidden">Companies and families</p>
                         </div>
                     </div>
                 </div>
@@ -220,86 +237,102 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 es">Nuestros Servicios</h2>
                 <h2 class="text-3xl font-bold mb-4 zh hidden font-chinese">我们的服务</h2>
-                
+                <h2 class="text-3xl font-bold mb-4 en hidden">Our Services</h2>
                 <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
                 
                 <p class="max-w-2xl mx-auto text-gray-600 es">Ofrecemos una gama completa de servicios para facilitar su inversión y establecimiento en Chile.</p>
                 <p class="max-w-2xl mx-auto text-gray-600 zh hidden font-chinese">我们提供全方位的服务 以促进您在智利的投资和落户</p>
+                <p class="max-w-2xl mx-auto text-gray-600 en hidden">We offer a full range of services to facilitate your investment and establishment in Chile.</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
                 <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
-                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4">
-                        <img src="assets/images/">
+                    <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
+                        <img src="assets/images/bienesraices.png" class="object-cover w-full h-full" alt="Bienes Raíces">
                     </div>
                     <h3 class="text-xl font-semibold mb-3 es">Bienes Raíces</h3>
                     <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">房地产</h3>
+                    <h3 class="text-xl font-semibold mb-3 en hidden">Real Estate</h3>
                     <p class="text-gray-600 mb-4 es">
                         Compra, venta y arriendo de propiedades en Chile con asesoría en inversión inmobiliaria.
                     </p>
                     <p class="text-gray-600 mb-4 zh hidden font-chinese">
                         在智利购买 出售和租赁房产 并提供房地产投资建议
                     </p>
+                    <p class="text-gray-600 mb-4 en hidden">
+                        Purchase, sale, and rental of properties in Chile with real estate investment advice.
+                    </p>
                 </div>
                 
-                <!-- Service 2 -->
                 <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
                     <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
-                        <img src="assets/images/decoracion.png" class="object-cover w-full h-full">
+                        <img src="assets/images/decoracion.png" class="object-cover w-full h-full" alt="Decoración China">
                     </div>
                     <h3 class="text-xl font-semibold mb-3 es">Decoración China</h3>
                     <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">中式装饰</h3>
+                    <h3 class="text-xl font-semibold mb-3 en hidden">Chinese Decoration</h3>
                     <p class="text-gray-600 mb-4 es">
                         Diseño de oficinas y residencias con estilo chino, combinando estética y funcionalidad.
                     </p>
                     <p class="text-gray-600 mb-4 zh hidden font-chinese">
                         办公室和住宅中式设计，融合美学与功能。
                     </p>
+                    <p class="text-gray-600 mb-4 en hidden">
+                        Office and residential design with Chinese style, combining aesthetics and functionality.
+                    </p>
                 </div>
 
-                <!-- Service 3 -->
                 <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
                     <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
-                        <img src="assets/images/residencia.png" class="object-cover w-full h-full">
+                        <img src="assets/images/residencia.png" class="object-cover w-full h-full" alt="Residencias">
                     </div>
                     <h3 class="text-xl font-semibold mb-3 es">Residencias</h3>
                     <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">住宅咨询</h3>
+                    <h3 class="text-xl font-semibold mb-3 en hidden">Residences</h3>
                     <p class="text-gray-600 mb-4 es">
                         Asesoramiento integral para encontrar la mejor opción de vivienda en Chile.
                     </p>
                     <p class="text-gray-600 mb-4 zh hidden font-chinese">
                         全面咨询服务 帮助您在智利找到最佳住房选择
                     </p>
+                    <p class="text-gray-600 mb-4 en hidden">
+                        Comprehensive advice to find the best housing option in Chile.
+                    </p>
                 </div>
                 
-                <!-- Service 4 -->
                 <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
                     <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
-                        <img src="assets/images/inversion.png" class="object-cover w-full h-full">
+                        <img src="assets/images/inversion.png" class="object-cover w-full h-full" alt="Inversiones">
                     </div>
                     <h3 class="text-xl font-semibold mb-3 es">Inversiones</h3>
                     <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">投资</h3>
+                    <h3 class="text-xl font-semibold mb-3 en hidden">Investments</h3>
                     <p class="text-gray-600 mb-4 es">
                         Oportunidades de inversión en Chile para el público chino, con análisis de riesgo y rentabilidad.
                     </p>
                     <p class="text-gray-600 mb-4 zh hidden font-chinese">
                         为中国人提供智利投资机会 包括风险和回报分析
                     </p>
+                    <p class="text-gray-600 mb-4 en hidden">
+                        Investment opportunities in Chile for the Chinese public, with risk and profitability analysis.
+                    </p>
                 </div>
                 
-                <!-- Service 6 -->
                 <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
-                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4">
-                        <i class="fas fa-globe-asia text-2xl"></i>
+                    <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
+                        <img src="assets/images/cultural.png" class="object-cover w-full h-full" alt="Cultural">
                     </div>
                     <h3 class="text-xl font-semibold mb-3 es">Consultoría Cultural</h3>
                     <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">文化咨询</h3>
+                    <h3 class="text-xl font-semibold mb-3 en hidden">Cultural Consulting</h3>
                     <p class="text-gray-600 mb-4 es">
                         Facilitamos la adaptación cultural entre Chile y China para negocios y vida diaria.
                     </p>
                     <p class="text-gray-600 mb-4 zh hidden font-chinese">
                         促进智利和中国之间的文化适应 助力商业和日常生活
+                    </p>
+                    <p class="text-gray-600 mb-4 en hidden">
+                        We facilitate cultural adaptation between Chile and China for business and daily life.
                     </p>
                 </div>
             </div>
@@ -312,22 +345,24 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 es">Contáctenos</h2>
                 <h2 class="text-3xl font-bold mb-4 zh hidden font-chinese">联系我们</h2>
-                
+                <h2 class="text-3xl font-bold mb-4 en hidden">Contact Us</h2>
                 <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
                 
                 <p class="max-w-2xl mx-auto text-gray-600 es">Estamos listos para ayudarle en su proyecto en Chile. Envíenos un mensaje y nos pondremos en contacto a la brevedad.</p>
                 <p class="max-w-2xl mx-auto text-gray-600 zh hidden font-chinese">我们已准备好协助您在智利的项目 请发送消息给我们 我们将尽快与您联系</p>
+                <p class="max-w-2xl mx-auto text-gray-600 en hidden">We are ready to assist you with your project in Chile. Send us a message and we will get in touch shortly.</p>
             </div>
             
             <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-lg overflow-hidden">
                 <div class="lg:w-1/2 p-8 md:p-12">
                     <h3 class="text-xl font-semibold mb-4 es">Envíe su consulta</h3>
                     <h3 class="text-xl font-semibold mb-4 zh hidden font-chinese">发送您的咨询</h3>
-                    
+                    <h3 class="text-xl font-semibold mb-4 en hidden">Send Your Inquiry</h3>
                     <form class="space-y-4">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1 es">Nombre completo</label>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">姓名</label>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1 en hidden">Full Name</label>
                             <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                         </div>
                         <div>
@@ -337,42 +372,53 @@
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-1 es">Teléfono</label>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">电话</label>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1 en hidden">Phone</label>
                             <input type="text" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                         </div>
                         <div>
                             <label for="service" class="block text-sm font-medium text-gray-700 mb-1 es">Servicio de interés</label>
                             <label for="service" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">感兴趣的服务</label>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1 en hidden">Service of Interest</label>
                             <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                                 <option value="" disabled selected class="es">Seleccione un servicio</option>
                                 <option value="" disabled class="zh hidden">选择服务</option>
+                                <option value="" disabled class="en hidden">Select a service</option>
                                 <option value="real-estate" class="es">Bienes Raíces</option>
                                 <option value="real-estate" class="zh hidden">房地产</option>
+                                <option value="real-estate" class="en hidden">Real Estate</option>
                                 <option value="decoration" class="es">Decoración China</option>
                                 <option value="decoration" class="zh hidden">中式装饰</option>
+                                <option value="decoration" class="en hidden">Chinese Decoration</option>
                                 <option value="residences" class="es">Residencias</option>
                                 <option value="residences" class="zh hidden">住宅咨询</option>
+                                <option value="residences" class="en hidden">Residences</option>
                                 <option value="investments" class="es">Inversiones</option>
                                 <option value="investments" class="zh hidden">投资</option>
+                                <option value="investments" class="en hidden">Investments</option>
                                 <option value="legal" class="es">Legal y Migración</option>
                                 <option value="legal" class="zh hidden">法律与移民</option>
+                                <option value="legal" class="en hidden">Legal and Migration</option>
                                 <option value="cultural" class="es">Consultoría Cultural</option>
                                 <option value="cultural" class="zh hidden">文化咨询</option>
+                                <option value="cultural" class="en hidden">Cultural Consulting</option>
                             </select>
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 mb-1 es">Mensaje</label>
                             <label for="message" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">消息</label>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1 en hidden">Message</label>
                             <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition-colors es">Enviar consulta</button>
                         <button type="submit" class="w-full bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition-colors zh hidden">发送咨询</button>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition-colors en hidden">Send Inquiry</button>
                     </form>
                 </div>
                 <div class="lg:w-1/2 p-8 md:p-12 bg-primary text-white flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-semibold mb-6 es">Información de contacto</h3>
                         <h3 class="text-xl font-semibold mb-6 zh hidden font-chinese">联系信息</h3>
-                        
+                        <h3 class="text-xl font-semibold mb-6 en hidden">Contact Information</h3>
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0 pt-1">
@@ -390,8 +436,9 @@
                                 <div class="ml-4">
                                     <h4 class="font-medium es">Horario de atención</h4>
                                     <h4 class="font-medium zh hidden">营业时间</h4>
-                                    <p class="mt-1 es">Lunes a Viernes: 9:00 - 18:00 hrs</p>
+                                    <h4 class="font-medium en hidden">Opening Hours</h4> <p class="mt-1 es">Lunes a Viernes: 9:00 - 18:00 hrs</p>
                                     <p class="mt-1 zh hidden">周一至周五: 9:00 - 18:00</p>
+                                    <p class="mt-1 en hidden">Monday to Friday: 9:00 AM - 6:00 PM</p>
                                 </div>
                             </div>
                         </div>
@@ -408,42 +455,53 @@
                 <div class="mb-8 md:mb-0">
                     <div class="flex items-center space-x-2 mb-4">
                         <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
-                            <img src="assets/images/logo.ico">
+                            <img src="assets/images/logo.ico" alt="Asia Inversiones Logo">
                         </div>
                         <span class="text-xl font-bold text-white es">Asia Inversiones</span>
                         <span class="text-xl font-bold text-white zh hidden font-chinese">中智商务</span>
+                        <span class="text-xl font-bold text-white en hidden">Asia Investments</span>
                     </div>
                     <p class="max-w-xs text-gray-400 es">Conectando los mercados de Chile y China con profesionalismo y excelencia.</p>
                     <p class="max-w-xs text-gray-400 zh hidden font-chinese">以专业和卓越连接智利和中国市场</p>
+                    <p class="max-w-xs text-gray-400 en hidden">Connecting the markets of Chile and China with professionalism and excellence.</p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
                     <div>
                         <h4 class="text-lg font-semibold mb-4 es">Servicios</h4>
                         <h4 class="text-lg font-semibold mb-4 zh hidden font-chinese">服务</h4>
+                        <h4 class="text-lg font-semibold mb-4 en hidden">Services</h4>
                         <ul class="space-y-2">
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors es">Bienes Raíces</a></li>
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">房地产</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors en hidden">Real Estate</a></li>
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors es">Decoración China</a></li>
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">中式装饰</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors en hidden">Chinese Decoration</a></li>
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors es">Residencias</a></li>
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">住宅咨询</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors en hidden">Residences</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-lg font-semibold mb-4 es">Enlaces</h4>
                         <h4 class="text-lg font-semibold mb-4 zh hidden font-chinese">链接</h4>
+                        <h4 class="text-lg font-semibold mb-4 en hidden">Links</h4>
                         <ul class="space-y-2">
                             <li><a href="#home" class="text-gray-400 hover:text-white transition-colors es">Inicio</a></li>
                             <li><a href="#home" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">首页</a></li>
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors en hidden">Home</a></li>
                             <li><a href="#about" class="text-gray-400 hover:text-white transition-colors es">Nosotros</a></li>
                             <li><a href="#about" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">关于我们</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors en hidden">About Us</a></li>
                             <li><a href="#services" class="text-gray-400 hover:text-white transition-colors es">Servicios</a></li>
                             <li><a href="#services" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">服务</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors en hidden">Services</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-lg font-semibold mb-4 es">Contacto</h4>
                         <h4 class="text-lg font-semibold mb-4 zh hidden font-chinese">联系</h4>
+                        <h4 class="text-lg font-semibold mb-4 en hidden">Contact</h4>
                         <ul class="space-y-2">
                             <li class="flex items-start">
                                 <i class="fas fa-envelope mt-1 mr-2"></i>
@@ -456,6 +514,7 @@
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 mb-4 md:mb-0 es">© 2025 Asia Inversiones. Todos los derechos reservados.</p>
                 <p class="text-gray-400 mb-4 md:mb-0 zh hidden">© 2025 亚洲投资。版权所有</p>
+                <p class="text-gray-400 mb-4 md:mb-0 en hidden">© 2025 Asia Investments. All rights reserved.</p>
             </div>
         </div>
     </footer>
