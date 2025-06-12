@@ -1,805 +1,519 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asia Inversiones</title>
+    <title>Asia Inversiones | 亚洲投资</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.ico">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#B91C1C',
+                        accent: '#047857',
+                        chileRed: '#E4002B',
+                        chileBlue: '#00205B',
+                        chinaRed: '#DE2910',
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans"', 'sans-serif'],
+                        chinese: ['"Noto Sans SC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        .language-option {
+        /* Custom CSS for elements that need more precise control */
+        .language-selector input:checked + label {
+            background-color: #1E40AF;
+            color: white;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .testimonial-card {
             transition: all 0.3s ease;
         }
-        .language-option:hover {
-            transform: scale(1.1);
+        .testimonial-card:hover {
+            transform: scale(1.03);
         }
-        .nav-link:hover {
-            color: #D97706;
+        .country-flag {
+            width: 30px;
+            height: 20px;
+            object-fit: cover;
+            border-radius: 2px;
         }
-        .investment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        .stats-item:hover .stats-number {
-            color: #D97706;
-        }
-        .blur-section {
-            filter: blur(10px);
+        .hidden-language {
+            display: none;
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
-    <!-- Language Selector -->
-    <div class="bg-gray-800 text-white py-2 px-4 flex justify-end space-x-4">
-        <button onclick="changeLanguage('es')" class="language-option hover:text-amber-500 focus:outline-none">
-            <span class="flag-icon flag-icon-es mr-1"></span> Español
-        </button>
-        <button onclick="changeLanguage('en')" class="language-option hover:text-amber-500 focus:outline-none">
-            <span class="flag-icon flag-icon-us mr-1"></span> English
-        </button>
-        <button onclick="changeLanguage('zh')" class="language-option hover:text-amber-500 focus:outline-none">
-            <span class="flag-icon flag-icon-cn mr-1"></span> 中文
-        </button>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Language Toggle -->
+    <div class="fixed top-2 right-2 z-50 flex space-x-1 p-1 bg-white rounded-full shadow-lg">
+        <input type="radio" id="lang-es" name="language" value="es" checked class="hidden">
+        <label for="lang-es" class="language-selector px-4 py-1 rounded-full cursor-pointer transition-colors flex items-center">
+            <img src="https://flagcdn.com/w20/cl.png" alt="Chile Flag" class="country-flag mr-2">
+            <span class="es">ES</span>
+            <span class="zh hidden">西班牙语</span>
+        </label>
+        <input type="radio" id="lang-zh" name="language" value="zh" class="hidden">
+        <label for="lang-zh" class="language-selector px-4 py-1 rounded-full cursor-pointer transition-colors flex items-center">
+            <img src="https://flagcdn.com/w20/cn.png" alt="China Flag" class="country-flag mr-2">
+            <span class="es">中文</span>
+            <span class="zh hidden">Chino</span>
+        </label>
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <img class="h-12 w-auto" src="assets/images/logo.png" alt="Asia Inversiones">Asia Inversiones
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="#" class="nav-link text-gray-900 hover:text-amber-600 px-3 py-2 text-sm font-medium" data-lang-key="home">Inicio</a>
-                        <a href="#" class="nav-link text-gray-900 hover:text-amber-600 px-3 py-2 text-sm font-medium" data-lang-key="about">Nosotros</a>
-                        <a href="#" class="nav-link text-gray-900 hover:text-amber-600 px-3 py-2 text-sm font-medium" data-lang-key="services">Servicios</a>
-                        <a href="#" class="nav-link text-gray-900 hover:text-amber-600 px-3 py-2 text-sm font-medium" data-lang-key="contact">Contacto</a>
+    <nav class="bg-white shadow-md fixed w-full z-40">
+        <div class="container mx-auto px-6 py-10">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <img src="assets/images/logo.ico">
                     </div>
+                    <span class="text-xl font-bold text-primary es">Asia Inversiones</span>
+                    <span class="text-xl font-bold text-primary zh hidden">中智商务</span>
                 </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors es">Inicio</a>
+                    <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">首页</a>
+                    
+                    <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors es">Nosotros</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">关于我们</a>
+                    
+                    <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors es">Servicios</a>
+                    <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">服务</a>
+                    
+                    <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium transition-colors es">Testimonios</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">评价</a>
+                    
+                    <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors es">Contacto</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">联系</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-6 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors es">Inicio</a>
+                <a href="#home" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">首页</a>
+                
+                <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors es">Nosotros</a>
+                <a href="#about" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">关于我们</a>
+                
+                <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors es">Servicios</a>
+                <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">服务</a>
+                
+                <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors es">Contacto</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition-colors zh hidden">联系</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="relative bg-gray-900 overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="relative z-10 pb-8 bg-gray-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-                <div class="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
-                    <div class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                        <div class="sm:text-center lg:text-left">
-                            <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl" data-lang-key="hero-title">
-                                <span class="block">Asia Inversiones</span>
-                            </h1>
-                            <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0" data-lang-key="hero-subtitle">
-                                Soluciones de inversión estratégica para el desarrollo de centros comerciales con capital chino en Chile.
-                            </p>
-                            <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                                <div class="rounded-md shadow">
-                                    <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 md:py-4 md:text-lg md:px-10" data-lang-key="hero-cta">
-                                        Consulte nuestras oportunidades
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gradient-to-b from-gray-900 to-gray-800">
-                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full opacity-80" src="assets/images/background.png" alt="Modern mall architecture">
-                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="blur-section" id="blured">
-        <!-- Trust Indicators -->
-        <div class="bg-white py-12 blured">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:text-center">
-                    <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase" data-lang-key="trust-title">Nuestra reputación</h2>
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-lang-key="trust-subtitle">
-                        Construyendo confianza desde 2010
-                    </p>
-                </div>
-
-                <div class="mt-10">
-                    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-                        <div class="stats-item text-center">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-amber-100 text-amber-600 mx-auto">
-                                <i class="fas fa-building text-xl"></i>
-                            </div>
-                            <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900" data-lang-key="stat1-title">Proyectos completados</h3>
-                            <p class="mt-2 text-3xl font-extrabold text-gray-800 stats-number">
-                                42+
-                            </p>
-                        </div>
-
-                        <div class="stats-item text-center">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-amber-100 text-amber-600 mx-auto">
-                                <i class="fas fa-dollar-sign text-xl"></i>
-                            </div>
-                            <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900" data-lang-key="stat2-title">Inversión gestionada</h3>
-                            <p class="mt-2 text-3xl font-extrabold text-gray-800 stats-number">
-                                $800M+
-                            </p>
-                        </div>
-
-                        <div class="stats-item text-center">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-amber-100 text-amber-600 mx-auto">
-                                <i class="fas fa-handshake text-xl"></i>
-                            </div>
-                            <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900" data-lang-key="stat3-title">Socios chinos</h3>
-                            <p class="mt-2 text-3xl font-extrabold text-gray-800 stats-number">
-                                24
-                            </p>
-                        </div>
-
-                        <div class="stats-item text-center">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-amber-100 text-amber-600 mx-auto">
-                                <i class="fas fa-chart-line text-xl"></i>
-                            </div>
-                            <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900" data-lang-key="stat4-title">Retorno promedio</h3>
-                            <p class="mt-2 text-3xl font-extrabold text-gray-800 stats-number">
-                                12.8%
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Investment Opportunities -->
-        <div class="bg-gray-100 py-16 blured">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase" data-lang-key="invest-title">Oportunidades</h2>
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-lang-key="invest-subtitle">
-                        Oportunidades de inversión actuales
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto" data-lang-key="invest-description">
-                        Proyectos seleccionados de desarrollo comercial con sólido potencial de crecimiento.
-                    </p>
-                </div>
-
-                <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <!-- Investment Card 1 -->
-                    <div class="investment-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
-                        <div class="relative h-48 overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1590490360182-c33d07733404?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mall project">
-                            <div class="absolute top-0 right-0 bg-amber-600 text-white px-3 py-1 text-sm font-medium">
-                                <span data-lang-key="invest-tag1">Oportunidad estratégica</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900" data-lang-key="invest-card1-title">Centro Comercial Oriental - Santiago</h3>
-                            <p class="mt-2 text-gray-600" data-lang-key="invest-card1-desc">
-                                Desarrollo de 25,000 m² en el corazón de Santiago, con enfoque en marcas chinas premium.
-                            </p>
-                            <div class="mt-4 flex justify-between items-center">
-                                <span class="text-amber-600 font-bold" data-lang-key="invest-card1-size">Tamaño: 25,000 m²</span>
-                                <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700" data-lang-key="invest-card1-phase">Fase 2</span>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
-                                <span class="text-gray-700" data-lang-key="invest-card1-return">ROI estimado:</span>
-                                <span class="font-bold">14.2%</span>
-                            </div>
-                            <button class="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded transition duration-300" data-lang-key="invest-card1-button">
-                                Más información
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Investment Card 2 -->
-                    <div class="investment-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
-                        <div class="relative h-48 overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mall project">
-                            <div class="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-sm font-medium">
-                                <span data-lang-key="invest-tag2">Nueva oportunidad</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900" data-lang-key="invest-card2-title">Torre Comercial Dragón - Valparaíso</h3>
-                            <p class="mt-2 text-gray-600" data-lang-key="invest-card2-desc">
-                                Edificio de uso mixto con 18,000 m² de espacio comercial y un hotel de 150 habitaciones.
-                            </p>
-                            <div class="mt-4 flex justify-between items-center">
-                                <span class="text-amber-600 font-bold" data-lang-key="invest-card2-size">Tamaño: 18,000 m²</span>
-                                <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700" data-lang-key="invest-card2-phase">Fase 1</span>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
-                                <span class="text-gray-700" data-lang-key="invest-card2-return">ROI estimado:</span>
-                                <span class="font-bold">16.5%</span>
-                            </div>
-                            <button class="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded transition duration-300" data-lang-key="invest-card2-button">
-                                Más información
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Investment Card 3 -->
-                    <div class="investment-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
-                        <div class="relative h-48 overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mall project">
-                            <div class="absolute top-0 right-0 bg-blue-600 text-white px-3 py-1 text-sm font-medium">
-                                <span data-lang-key="invest-tag3">Oportunidad limitada</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900" data-lang-key="invest-card3-title">Distrito Comercial Fenghuang - Concepción</h3>
-                            <p class="mt-2 text-gray-600" data-lang-key="invest-card3-desc">
-                                Desarrollo integral con 32,000 m² para 120 locales comerciales y 3 torres de oficinas.
-                            </p>
-                            <div class="mt-4 flex justify-between items-center">
-                                <span class="text-amber-600 font-bold" data-lang-key="invest-card3-size">Tamaño: 32,000 m²</span>
-                                <span class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700" data-lang-key="invest-card3-phase">Fase 3</span>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
-                                <span class="text-gray-700" data-lang-key="invest-card3-return">ROI estimado:</span>
-                                <span class="font-bold">13.8%</span>
-                            </div>
-                            <button class="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded transition duration-300" data-lang-key="invest-card3-button">
-                                Más información
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-12 text-center">
-                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition duration-300" data-lang-key="invest-viewall">
-                        Ver todas las oportunidades <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Testimonials -->
-        <div class="bg-white py-16 blured">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:text-center">
-                    <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase" data-lang-key="testimonials-title">Confianza</h2>
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-lang-key="testimonials-subtitle">
-                        Lo que dicen nuestros inversionistas
-                    </p>
-                </div>
-
-                <div class="mt-10">
-                    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-                        <!-- Testimonial 1 -->
-                        <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-12 w-12 rounded-full overflow-hidden bg-gray-200">
-                                    <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Testimonial 1">
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-gray-900">Zhang Wei</h3>
-                                    <div class="flex text-amber-500 mt-1">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-4 text-gray-600" data-lang-key="testimonial1-text">
-                                "Golden Bridge nos ha proporcionado un acceso excepcional a oportunidades de inversión en Chile. Su conocimiento del mercado local combinado con sus conexiones chinas es invaluable."
-                            </p>
-                            <p class="mt-3 text-sm text-gray-500" data-lang-key="testimonial1-role">
-                                Director de inversiones, Grupo Longtai, Shanghai
-                            </p>
-                        </div>
-
-                        <!-- Testimonial 2 -->
-                        <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-12 w-12 rounded-full overflow-hidden bg-gray-200">
-                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonial 2">
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-gray-900">Roberto Fernández</h3>
-                                    <div class="flex text-amber-500 mt-1">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-4 text-gray-600" data-lang-key="testimonial2-text">
-                                "Como inversionista chileno con limitado conocimiento del mercado chino, Golden Bridge ha sido el puente perfecto para diversificar mi portafolio hacia proyectos de desarrollo comercial con capital chino."
-                            </p>
-                            <p class="mt-3 text-sm text-gray-500" data-lang-key="testimonial2-role">
-                                CEO, Inversiones Costa del Pacífico, Santiago
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="bg-gray-800 text-white py-16 blured">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-8">
-                    <div class="mb-12 lg:mb-0">
-                        <h2 class="text-3xl font-extrabold text-white" data-lang-key="contact-title">Hablemos de su próximo proyecto</h2>
-                        <p class="mt-4 text-lg text-gray-300" data-lang-key="contact-subtitle">
-                            Nuestro equipo de expertos financieros y de desarrollo comercial está listo para asesorarle.
-                        </p>
-                        
-                        <div class="mt-8">
-                            <h3 class="text-lg font-medium text-amber-400" data-lang-key="contact-office1">Oficina Chile</h3>
-                            <p class="mt-2 text-gray-300">
-                                Avenida El Golf 150, Las Condes<br>
-                                Santiago, Chile<br>
-                                <span class="text-amber-300">+56 2 2823 4500</span>
-                            </p>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <h3 class="text-lg font-medium text-amber-400" data-lang-key="contact-office2">Oficina China</h3>
-                            <p class="mt-2 text-gray-300">
-                                Pudong Avenue 501, Shanghai Tower<br>
-                                Shanghai, China<br>
-                                <span class="text-amber-300">+86 21 5879 3456</span>
-                            </p>
-                        </div>
-                    </div>
+    <section id="home" class="pt-32 pb-20 px-4 bg-gradient-to-r from-blue-50 to-red-50">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 es">Puente de negocios entre Chile y China</h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 zh hidden font-chinese">连接智利与中国的商业桥梁</h1>
+                
+                <p class="text-lg mb-8 text-gray-700 es">Especializados en facilitar inversiones y negocios bilaterales, ayudamos a empresas y familias chinas a establecerse en Chile con éxito.</p>
+                <p class="text-lg mb-8 text-gray-700 zh hidden font-chinese">专业促进双边投资与商业 帮助中国企业和家庭在智利成功落户</p>
+                
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg text-center font-medium transition-colors es">Contactar ahora</a>
+                    <a href="#contact" class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg text-center font-medium transition-colors zh hidden">立即联系</a>
                     
-                    <div class="bg-gray-700 p-8 rounded-lg">
-                        <h3 class="text-xl font-bold mb-6" data-lang-key="contact-form-title">Envíenos un mensaje</h3>
-                        <form>
-                            <div class="grid grid-cols-1 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-300" data-lang-key="contact-form-name">Nombre completo</label>
-                                    <input type="text" id="name" class="mt-1 block w-full bg-gray-600 border-gray-500 rounded-md shadow-sm text-white focus:ring-amber-500 focus:border-amber-500 sm:text-sm p-2">
-                                </div>
-                                
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-300" data-lang-key="contact-form-email">Correo electrónico</label>
-                                    <input type="email" id="email" class="mt-1 block w-full bg-gray-600 border-gray-500 rounded-md shadow-sm text-white focus:ring-amber-500 focus:border-amber-500 sm:text-sm p-2">
-                                </div>
-                                
-                                <div>
-                                    <label for="phone" class="block text-sm font-medium text-gray-300" data-lang-key="contact-form-phone">Teléfono</label>
-                                    <input type="tel" id="phone" class="mt-1 block w-full bg-gray-600 border-gray-500 rounded-md shadow-sm text-white focus:ring-amber-500 focus:border-amber-500 sm:text-sm p-2">
-                                </div>
-                                
-                                <div>
-                                    <label for="interest" class="block text-sm font-medium text-gray-300" data-lang-key="contact-form-interest">Área de interés</label>
-                                    <select id="interest" class="mt-1 block w-full bg-gray-600 border-gray-500 rounded-md shadow-sm text-white focus:ring-amber-500 focus:border-amber-500 sm:text-sm p-2">
-                                        <option value="" data-lang-key="contact-form-select">Seleccione una opción</option>
-                                        <option value="investment" data-lang-key="contact-form-option1">Oportunidades de inversión</option>
-                                        <option value="consulting" data-lang-key="contact-form-option2">Servicios de consultoría</option>
-                                        <option value="partnership" data-lang-key="contact-form-option3">Oportunidades de asociación</option>
-                                        <option value="other" data-lang-key="contact-form-option4">Otros</option>
-                                    </select>
-                                </div>
-                                
-                                <div>
-                                    <label for="message" class="block text-sm font-medium text-gray-300" data-lang-key="contact-form-message">Mensaje</label>
-                                    <textarea id="message" rows="4" class="mt-1 block w-full bg-gray-600 border-gray-500 rounded-md shadow-sm text-white focus:ring-amber-500 focus:border-amber-500 sm:text-sm p-2"></textarea>
-                                </div>
-                                
-                                <div class="pt-2">
-                                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition duration-300" data-lang-key="contact-form-submit">
-                                        Enviar mensaje
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                    <a href="#services" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-lg text-center font-medium border border-primary transition-colors es">Nuestros servicios</a>
+                    <a href="#services" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-lg text-center font-medium border border-primary transition-colors zh hidden">我们的服务</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute -top-6 -left-6 w-full h-full bg-chileBlue rounded-lg z-0"></div>
+                    <div class="absolute -bottom-6 -right-6 w-full h-full bg-chinaRed rounded-lg z-0"></div>
+                    <div class="relative z-10 bg-white p-4 rounded-lg shadow-lg">
+                        <img src="assets/images/photo-1560518883-ce09059eeffa.png" 
+                             alt="Chile and China business" 
+                             class="w-full h-auto rounded-lg object-cover">
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="bg-gray-900 text-white blured">
-            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div>
-                        <h3 class="text-sm font-semibold text-amber-400 tracking-wider uppercase" data-lang-key="footer-about">Acerca de</h3>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link1">Nuestra historia</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link2">Equipo directivo</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link3">Carreras</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link4">Prensa</a></li>
-                        </ul>
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 es">Sobre Nosotros</h2>
+                <h2 class="text-3xl font-bold mb-4 zh hidden font-chinese">关于我们</h2>
+                
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                
+                <p class="max-w-2xl mx-auto text-gray-600 es">Con más de 10 años de experiencia conectando los mercados chileno y chino, ofrecemos soluciones integrales para inversiones y establecimiento en Chile.</p>
+                <p class="max-w-2xl mx-auto text-gray-600 zh hidden font-chinese">拥有10余年连接智利和中国市场的经验 我们为在智利的投资和落户提供全面解决方案</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="relative overflow-hidden rounded-lg shadow-xl h-80 w-full">
+                        <img src="assets/images/team.png" 
+                             alt="Our team" 
+                             class="w-full h-full object-cover">
                     </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 es">Nuestra experiencia</h3>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 zh hidden font-chinese">我们的经验</h3>
                     
-                    <div>
-                        <h3 class="text-sm font-semibold text-amber-400 tracking-wider uppercase" data-lang-key="footer-services">Servicios</h3>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link5">Asesoría de inversión</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link6">Desarrollo comercial</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link7">Market Entry China</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link8">Consultoría legal</a></li>
-                        </ul>
-                    </div>
+                    <p class="mb-6 text-gray-600 es">
+                        Somos un equipo binacional con amplio conocimiento tanto del mercado chileno como del chino. Nuestros especialistas en derecho, bienes raíces y comercio internacional le brindarán la mejor asesoría para su proyecto.
+                    </p>
+                    <p class="mb-6 text-gray-600 zh hidden font-chinese">
+                        我们是跨国团队 对智利和中国市场都有深入了解 我们拥有法律 房地产和国际商业方面的专家 为您的项目提供最佳建议
+                    </p>
                     
-                    <div>
-                        <h3 class="text-sm font-semibold text-amber-400 tracking-wider uppercase" data-lang-key="footer-resources">Recursos</h3>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link9">Reportes de mercado</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link10">Guías de inversión</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link11">Blog</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link12">FAQs</a></li>
-                        </ul>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mb-3">
+                                <i class="fas fa-check text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-1 es">100+ Proyectos</h4>
+                            <h4 class="font-semibold mb-1 zh hidden font-chinese">100+ 项目</h4>
+                            <p class="text-sm text-gray-500 es">Completados con éxito</p>
+                            <p class="text-sm text-gray-500 zh hidden">成功完成</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white mb-3">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-1 es">50+ Clientes</h4>
+                            <h4 class="font-semibold mb-1 zh hidden font-chinese">50+ 客户</h4>
+                            <p class="text-sm text-gray-500 es">Empresas y familias</p>
+                            <p class="text-sm text-gray-500 zh hidden">企业和家庭</p>
+                        </div>
                     </div>
-                    
-                    <div>
-                        <h3 class="text-sm font-semibold text-amber-400 tracking-wider uppercase" data-lang-key="footer-legal">Legal</h3>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link13">Aviso de privacidad</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link14">Términos de servicio</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link15">Regulaciones</a></li>
-                            <li><a href="#" class="text-gray-300 hover:text-white transition" data-lang-key="footer-link16">Conducta</a></li>
-                        </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 es">Nuestros Servicios</h2>
+                <h2 class="text-3xl font-bold mb-4 zh hidden font-chinese">我们的服务</h2>
+                
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                
+                <p class="max-w-2xl mx-auto text-gray-600 es">Ofrecemos una gama completa de servicios para facilitar su inversión y establecimiento en Chile.</p>
+                <p class="max-w-2xl mx-auto text-gray-600 zh hidden font-chinese">我们提供全方位的服务 以促进您在智利的投资和落户</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
+                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4">
+                        <img src="assets/images/">
                     </div>
+                    <h3 class="text-xl font-semibold mb-3 es">Bienes Raíces</h3>
+                    <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">房地产</h3>
+                    <p class="text-gray-600 mb-4 es">
+                        Compra, venta y arriendo de propiedades en Chile con asesoría en inversión inmobiliaria.
+                    </p>
+                    <p class="text-gray-600 mb-4 zh hidden font-chinese">
+                        在智利购买 出售和租赁房产 并提供房地产投资建议
+                    </p>
                 </div>
                 
-                <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-400 text-sm" data-lang-key="footer-copyright">
-                        © 2023 Golden Bridge Investments. Todos los derechos reservados.
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
+                    <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
+                        <img src="assets/images/decoracion.png" class="object-cover w-full h-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 es">Decoración China</h3>
+                    <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">中式装饰</h3>
+                    <p class="text-gray-600 mb-4 es">
+                        Diseño de oficinas y residencias con estilo chino, combinando estética y funcionalidad.
+                    </p>
+                    <p class="text-gray-600 mb-4 zh hidden font-chinese">
+                        办公室和住宅中式设计，融合美学与功能。
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
+                    <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
+                        <img src="assets/images/residencia.png" class="object-cover w-full h-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 es">Residencias</h3>
+                    <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">住宅咨询</h3>
+                    <p class="text-gray-600 mb-4 es">
+                        Asesoramiento integral para encontrar la mejor opción de vivienda en Chile.
+                    </p>
+                    <p class="text-gray-600 mb-4 zh hidden font-chinese">
+                        全面咨询服务 帮助您在智利找到最佳住房选择
+                    </p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
+                    <div class="w-32 h-32 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4 overflow-hidden">
+                        <img src="assets/images/inversion.png" class="object-cover w-full h-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 es">Inversiones</h3>
+                    <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">投资</h3>
+                    <p class="text-gray-600 mb-4 es">
+                        Oportunidades de inversión en Chile para el público chino, con análisis de riesgo y rentabilidad.
+                    </p>
+                    <p class="text-gray-600 mb-4 zh hidden font-chinese">
+                        为中国人提供智利投资机会 包括风险和回报分析
+                    </p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 hover:border-primary border-b-4 border-transparent">
+                    <div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4">
+                        <i class="fas fa-globe-asia text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 es">Consultoría Cultural</h3>
+                    <h3 class="text-xl font-semibold mb-3 zh hidden font-chinese">文化咨询</h3>
+                    <p class="text-gray-600 mb-4 es">
+                        Facilitamos la adaptación cultural entre Chile y China para negocios y vida diaria.
+                    </p>
+                    <p class="text-gray-600 mb-4 zh hidden font-chinese">
+                        促进智利和中国之间的文化适应 助力商业和日常生活
                     </p>
                 </div>
             </div>
-        </footer>
-    </div>
-    <!-- Language Translation Script -->
-    <script>
-        // Language translations
-        const translations = {
-            'es': {
-                'home': 'Inicio',
-                'about': 'Nosotros',
-                'services': 'Servicios',
-                'projects': 'Proyectos',
-                'insights': 'Información',
-                'contact': 'Contacto',
-                'hero-title-1': 'Construyendo puentes',
-                'hero-title-2': 'entre China y Chile',
-                'hero-subtitle': 'Soluciones de inversión estratégica para el desarrollo de centros comerciales con capital chino en Chile.',
-                'hero-cta': 'Consulte nuestras oportunidades',
-                'hero-secondary': 'Ver proyectos',
-                'trust-title': 'Nuestra reputación',
-                'trust-subtitle': 'Construyendo confianza desde 2012',
-                'stat1-title': 'Proyectos completados',
-                'stat2-title': 'Inversión gestionada',
-                'stat3-title': 'Socios chinos',
-                'stat4-title': 'Retorno promedio',
-                'invest-title': 'Oportunidades',
-                'invest-subtitle': 'Oportunidades de inversión actuales',
-                'invest-description': 'Proyectos seleccionados de desarrollo comercial con sólido potencial de crecimiento.',
-                'invest-tag1': 'Oportunidad estratégica',
-                'invest-card1-title': 'Centro Comercial Oriental - Santiago',
-                'invest-card1-desc': 'Desarrollo de 25,000 m² en el corazón de Santiago, con enfoque en marcas chinas premium.',
-                'invest-card1-size': 'Tamaño: 25,000 m²',
-                'invest-card1-phase': 'Fase 2',
-                'invest-card1-return': 'ROI estimado:',
-                'invest-card1-button': 'Más información',
-                'invest-tag2': 'Nueva oportunidad',
-                'invest-card2-title': 'Torre Comercial Dragón - Valparaíso',
-                'invest-card2-desc': 'Edificio de uso mixto con 18,000 m² de espacio comercial y un hotel de 150 habitaciones.',
-                'invest-card2-size': 'Tamaño: 18,000 m²',
-                'invest-card2-phase': 'Fase 1',
-                'invest-card2-return': 'ROI estimado:',
-                'invest-card2-button': 'Más información',
-                'invest-tag3': 'Oportunidad limitada',
-                'invest-card3-title': 'Distrito Comercial Fenghuang - Concepción',
-                'invest-card3-desc': 'Desarrollo integral con 32,000 m² para 120 locales comerciales y 3 torres de oficinas.',
-                'invest-card3-size': 'Tamaño: 32,000 m²',
-                'invest-card3-phase': 'Fase 3',
-                'invest-card3-return': 'ROI estimado:',
-                'invest-card3-button': 'Más información',
-                'invest-viewall': 'Ver todas las oportunidades',
-                'testimonials-title': 'Confianza',
-                'testimonials-subtitle': 'Lo que dicen nuestros inversionistas',
-                'testimonial1-text': '"Golden Bridge nos ha proporcionado un acceso excepcional a oportunidades de inversión en Chile. Su conocimiento del mercado local combinado con sus conexiones chinas es invaluable."',
-                'testimonial1-role': 'Director de inversiones, Grupo Longtai, Shanghai',
-                'testimonial2-text': '"Como inversionista chileno con limitado conocimiento del mercado chino, Golden Bridge ha sido el puente perfecto para diversificar mi portafolio hacia proyectos de desarrollo comercial con capital chino."',
-                'testimonial2-role': 'CEO, Inversiones Costa del Pacífico, Santiago',
-                'contact-title': 'Hablemos de su próximo proyecto',
-                'contact-subtitle': 'Nuestro equipo de expertos financieros y de desarrollo comercial está listo para asesorarle.',
-                'contact-office1': 'Oficina Chile',
-                'contact-office2': 'Oficina China',
-                'contact-form-title': 'Envíenos un mensaje',
-                'contact-form-name': 'Nombre completo',
-                'contact-form-email': 'Correo electrónico',
-                'contact-form-phone': 'Teléfono',
-                'contact-form-interest': 'Área de interés',
-                'contact-form-select': 'Seleccione una opción',
-                'contact-form-option1': 'Oportunidades de inversión',
-                'contact-form-option2': 'Servicios de consultoría',
-                'contact-form-option3': 'Oportunidades de asociación',
-                'contact-form-option4': 'Otros',
-                'contact-form-message': 'Mensaje',
-                'contact-form-submit': 'Enviar mensaje',
-                'footer-about': 'Acerca de',
-                'footer-link1': 'Nuestra historia',
-                'footer-link2': 'Equipo directivo',
-                'footer-link3': 'Carreras',
-                'footer-link4': 'Prensa',
-                'footer-services': 'Servicios',
-                'footer-link5': 'Asesoría de inversión',
-                'footer-link6': 'Desarrollo comercial',
-                'footer-link7': 'Market Entry China',
-                'footer-link8': 'Consultoría legal',
-                'footer-resources': 'Recursos',
-                'footer-link9': 'Reportes de mercado',
-                'footer-link10': 'Guías de inversión',
-                'footer-link11': 'Blog',
-                'footer-link12': 'FAQs',
-                'footer-legal': 'Legal',
-                'footer-link13': 'Aviso de privacidad',
-                'footer-link14': 'Términos de servicio',
-                'footer-link15': 'Regulaciones',
-                'footer-link16': 'Conducta',
-                'footer-copyright': '© 2023 Golden Bridge Investments. Todos los derechos reservados.'
-            },
-            'en': {
-                'home': 'Home',
-                'about': 'About',
-                'services': 'Services',
-                'projects': 'Projects',
-                'insights': 'Insights',
-                'contact': 'Contact',
-                'hero-title-1': 'Building bridges',
-                'hero-title-2': 'between China and Chile',
-                'hero-subtitle': 'Strategic investment solutions for Chinese-funded mall development in Chile.',
-                'hero-cta': 'Explore our opportunities',
-                'hero-secondary': 'View projects',
-                'trust-title': 'Our reputation',
-                'trust-subtitle': 'Building trust since 2012',
-                'stat1-title': 'Completed projects',
-                'stat2-title': 'Capital deployed',
-                'stat3-title': 'Chinese partners',
-                'stat4-title': 'Average ROI',
-                'invest-title': 'Opportunities',
-                'invest-subtitle': 'Current investment opportunities',
-                'invest-description': 'Selected commercial development projects with strong growth potential.',
-                'invest-tag1': 'Strategic opportunity',
-                'invest-card1-title': 'Oriental Shopping Center - Santiago',
-                'invest-card1-desc': '25,000 m² development in Santiago city center, focused on premium Chinese brands.',
-                'invest-card1-size': 'Size: 25,000 m²',
-                'invest-card1-phase': 'Phase 2',
-                'invest-card1-return': 'Estimated ROI:',
-                'invest-card1-button': 'Learn more',
-                'invest-tag2': 'New opportunity',
-                'invest-card2-title': 'Dragon Commercial Tower - Valparaíso',
-                'invest-card2-desc': 'Mixed-use building with 18,000 m² retail space and 150-room hotel.',
-                'invest-card2-size': 'Size: 18,000 m²',
-                'invest-card2-phase': 'Phase 1',
-                'invest-card2-return': 'Estimated ROI:',
-                'invest-card2-button': 'Learn more',
-                'invest-tag3': 'Limited opportunity',
-                'invest-card3-title': 'Fenghuang Commercial District - Concepción',
-                'invest-card3-desc': 'Integrated development with 32,000 m² for 120 retail units and 3 office towers.',
-                'invest-card3-size': 'Size: 32,000 m²',
-                'invest-card3-phase': 'Phase 3',
-                'invest-card3-return': 'Estimated ROI:',
-                'invest-card3-button': 'Learn more',
-                'invest-viewall': 'View all opportunities',
-                'testimonials-title': 'Trust',
-                'testimonials-subtitle': 'What our investors say',
-                'testimonial1-text': '"Golden Bridge has provided exceptional access to investment opportunities in Chile. Their local market knowledge combined with Chinese connections is invaluable."',
-                'testimonial1-role': 'Investment Director, Longtai Group, Shanghai',
-                'testimonial2-text': '"As a Chilean investor with limited knowledge of the Chinese market, Golden Bridge has been the perfect bridge to diversify my portfolio into Chinese-funded commercial developments."',
-                'testimonial2-role': 'CEO, Pacific Coast Investments, Santiago',
-                'contact-title': 'Let\'s talk about your next project',
-                'contact-subtitle': 'Our team of financial and commercial development experts is ready to advise you.',
-                'contact-office1': 'Chile Office',
-                'contact-office2': 'China Office',
-                'contact-form-title': 'Send us a message',
-                'contact-form-name': 'Full name',
-                'contact-form-email': 'Email address',
-                'contact-form-phone': 'Phone number',
-                'contact-form-interest': 'Area of interest',
-                'contact-form-select': 'Select an option',
-                'contact-form-option1': 'Investment opportunities',
-                'contact-form-option2': 'Consulting services',
-                'contact-form-option3': 'Partnership opportunities',
-                'contact-form-option4': 'Other',
-                'contact-form-message': 'Message',
-                'contact-form-submit': 'Send message',
-                'footer-about': 'About',
-                'footer-link1': 'Our story',
-                'footer-link2': 'Leadership team',
-                'footer-link3': 'Careers',
-                'footer-link4': 'Press',
-                'footer-services': 'Services',
-                'footer-link5': 'Investment advisory',
-                'footer-link6': 'Commercial development',
-                'footer-link7': 'China market entry',
-                'footer-link8': 'Legal consulting',
-                'footer-resources': 'Resources',
-                'footer-link9': 'Market reports',
-                'footer-link10': 'Investment guides',
-                'footer-link11': 'Blog',
-                'footer-link12': 'FAQs',
-                'footer-legal': 'Legal',
-                'footer-link13': 'Privacy policy',
-                'footer-link14': 'Terms of service',
-                'footer-link15': 'Regulations',
-                'footer-link16': 'Conduct',
-                'footer-copyright': '© 2023 Golden Bridge Investments. All rights reserved.'
-            },
-            'zh': {
-                'home': '首页',
-                'about': '关于我们',
-                'services': '服务',
-                'projects': '项目',
-                'insights': '洞察',
-                'contact': '联系',
-                'hero-title-1': '搭建桥梁',
-                'hero-title-2': '连接中国与智利',
-                'hero-subtitle': '为智利中国投资商业地产开发提供战略投资解决方案。',
-                'hero-cta': '查看投资机会',
-                'hero-secondary': '浏览项目',
-                'trust-title': '我们的声誉',
-                'trust-subtitle': '自2012年以来建立信任',
-                'stat1-title': '完成项目',
-                'stat2-title': '管理资金',
-                'stat3-title': '中国合作伙伴',
-                'stat4-title': '平均回报率',
-                'invest-title': '机会',
-                'invest-subtitle': '当前投资机会',
-                'invest-description': '精选具有强大增长潜力的商业开发项目。',
-                'invest-tag1': '战略机会',
-                'invest-card1-title': '东方购物中心 - 圣地亚哥',
-                'invest-card1-desc': '位于圣地亚哥市中心的25,000平方米开发项目，专注于中国高端品牌。',
-                'invest-card1-size': '面积: 25,000平方米',
-                'invest-card1-phase': '第二阶段',
-                'invest-card1-return': '预计回报率:',
-                'invest-card1-button': '了解更多',
-                'invest-tag2': '新机会',
-                'invest-card2-title': '龙商业大厦 - 瓦尔帕莱索',
-                'invest-card2-desc': '混合用途建筑，拥有18,000平方米零售空间和150间客房的酒店。',
-                'invest-card2-size': '面积: 18,000平方米',
-                'invest-card2-phase': '第一阶段',
-                'invest-card2-return': '预计回报率:',
-                'invest-card2-button': '了解更多',
-                'invest-tag3': '限时机会',
-                'invest-card3-title': '凤凰商业区 - 康塞普西翁',
-                'invest-card3-desc': '综合开发项目，32,000平方米，包含120个零售单位和3栋写字楼。',
-                'invest-card3-size': '面积: 32,000平方米',
-                'invest-card3-phase': '第三阶段',
-                'invest-card3-return': '预计回报率:',
-                'invest-card3-button': '了解更多',
-                'invest-viewall': '查看所有机会',
-                'testimonials-title': '信任',
-                'testimonials-subtitle': '投资人评价',
-                'testimonial1-text': '"金桥投资为我们提供了卓越的智利投资机会。他们对中国市场的了解与智利当地的结合是无价的。"',
-                'testimonial1-role': '投资总监, 龙泰集团, 上海',
-                'testimonial2-text': '"作为一名对中国市场了解有限的智利投资者，金桥投资是让我将投资组合多元化为中国商业地产项目的完美桥梁。"',
-                'testimonial2-role': 'CEO, 太平洋海岸投资, 圣地亚哥',
-                'contact-title': '讨论您的下一个项目',
-                'contact-subtitle': '我们的金融和商业开发专家团队随时为您提供咨询。',
-                'contact-office1': '智利办公室',
-                'contact-office2': '中国办公室',
-                'contact-form-title': '发送消息',
-                'contact-form-name': '全名',
-                'contact-form-email': '电子邮件',
-                'contact-form-phone': '电话',
-                'contact-form-interest': '感兴趣的领域',
-                'contact-form-select': '请选择',
-                'contact-form-option1': '投资机会',
-                'contact-form-option2': '咨询服务',
-                'contact-form-option3': '合作机会',
-                'contact-form-option4': '其他',
-                'contact-form-message': '消息',
-                'contact-form-submit': '发送消息',
-                'footer-about': '关于',
-                'footer-link1': '我们的故事',
-                'footer-link2': '领导团队',
-                'footer-link3': '职业',
-                'footer-link4': '新闻',
-                'footer-services': '服务',
-                'footer-link5': '投资咨询',
-                'footer-link6': '商业开发',
-                'footer-link7': '中国市场进入',
-                'footer-link8': '法律咨询',
-                'footer-resources': '资源',
-                'footer-link9': '市场报告',
-                'footer-link10': '投资指南',
-                'footer-link11': '博客',
-                'footer-link12': '常见问题',
-                'footer-legal': '法律',
-                'footer-link13': '隐私政策',
-                'footer-link14': '服务条款',
-                'footer-link15': '法规',
-                'footer-link16': '行为准则',
-                'footer-copyright': '© 2023 金桥投资. 版权所有。'
-            }
-        };
+        </div>
+    </section>
 
-        function changeLanguage(lang) {
-            document.querySelectorAll('[data-lang-key]').forEach(element => {
-                const key = element.getAttribute('data-lang-key');
-                if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gradient-to-r from-blue-50 to-red-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 es">Contáctenos</h2>
+                <h2 class="text-3xl font-bold mb-4 zh hidden font-chinese">联系我们</h2>
+                
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                
+                <p class="max-w-2xl mx-auto text-gray-600 es">Estamos listos para ayudarle en su proyecto en Chile. Envíenos un mensaje y nos pondremos en contacto a la brevedad.</p>
+                <p class="max-w-2xl mx-auto text-gray-600 zh hidden font-chinese">我们已准备好协助您在智利的项目 请发送消息给我们 我们将尽快与您联系</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="lg:w-1/2 p-8 md:p-12">
+                    <h3 class="text-xl font-semibold mb-4 es">Envíe su consulta</h3>
+                    <h3 class="text-xl font-semibold mb-4 zh hidden font-chinese">发送您的咨询</h3>
+                    
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1 es">Nombre completo</label>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1 es">Teléfono</label>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">电话</label>
+                            <input type="text" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1 es">Servicio de interés</label>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">感兴趣的服务</label>
+                            <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="" disabled selected class="es">Seleccione un servicio</option>
+                                <option value="" disabled class="zh hidden">选择服务</option>
+                                <option value="real-estate" class="es">Bienes Raíces</option>
+                                <option value="real-estate" class="zh hidden">房地产</option>
+                                <option value="decoration" class="es">Decoración China</option>
+                                <option value="decoration" class="zh hidden">中式装饰</option>
+                                <option value="residences" class="es">Residencias</option>
+                                <option value="residences" class="zh hidden">住宅咨询</option>
+                                <option value="investments" class="es">Inversiones</option>
+                                <option value="investments" class="zh hidden">投资</option>
+                                <option value="legal" class="es">Legal y Migración</option>
+                                <option value="legal" class="zh hidden">法律与移民</option>
+                                <option value="cultural" class="es">Consultoría Cultural</option>
+                                <option value="cultural" class="zh hidden">文化咨询</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1 es">Mensaje</label>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1 zh hidden font-chinese">消息</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition-colors es">Enviar consulta</button>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition-colors zh hidden">发送咨询</button>
+                    </form>
+                </div>
+                <div class="lg:w-1/2 p-8 md:p-12 bg-primary text-white flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6 es">Información de contacto</h3>
+                        <h3 class="text-xl font-semibold mb-6 zh hidden font-chinese">联系信息</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 pt-1">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium">Email</h4>
+                                    <p class="mt-1">ventas.panefroz@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 pt-1">
+                                    <i class="fas fa-clock text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium es">Horario de atención</h4>
+                                    <h4 class="font-medium zh hidden">营业时间</h4>
+                                    <p class="mt-1 es">Lunes a Viernes: 9:00 - 18:00 hrs</p>
+                                    <p class="mt-1 zh hidden">周一至周五: 9:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                            <img src="assets/images/logo.ico">
+                        </div>
+                        <span class="text-xl font-bold text-white es">Asia Inversiones</span>
+                        <span class="text-xl font-bold text-white zh hidden font-chinese">中智商务</span>
+                    </div>
+                    <p class="max-w-xs text-gray-400 es">Conectando los mercados de Chile y China con profesionalismo y excelencia.</p>
+                    <p class="max-w-xs text-gray-400 zh hidden font-chinese">以专业和卓越连接智利和中国市场</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 es">Servicios</h4>
+                        <h4 class="text-lg font-semibold mb-4 zh hidden font-chinese">服务</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors es">Bienes Raíces</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">房地产</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors es">Decoración China</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">中式装饰</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors es">Residencias</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">住宅咨询</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 es">Enlaces</h4>
+                        <h4 class="text-lg font-semibold mb-4 zh hidden font-chinese">链接</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors es">Inicio</a></li>
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">首页</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors es">Nosotros</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">关于我们</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors es">Servicios</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors zh hidden font-chinese">服务</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 es">Contacto</h4>
+                        <h4 class="text-lg font-semibold mb-4 zh hidden font-chinese">联系</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-2"></i>
+                                <span class="text-gray-400">ventas.panefroz@gmail.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0 es">© 2025 Asia Inversiones. Todos los derechos reservados.</p>
+                <p class="text-gray-400 mb-4 md:mb-0 zh hidden">© 2025 亚洲投资。版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for toggling language and mobile menu -->
+    <script>
+        // Language toggle functionality
+        document.querySelectorAll('input[name="language"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const selectedLang = e.target.value;
+                if (selectedLang === 'zh') {
+                    document.querySelectorAll('.es').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                    document.querySelectorAll('option.zh').forEach(el => el.classList.remove('hidden'));
+                    document.querySelectorAll('option.es').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('option.en').forEach(el => el.classList.add('hidden'));
+                } else if (selectedLang === 'es') {
+                    document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.es').forEach(el => el.classList.remove('hidden'));
+                    document.querySelectorAll('option.es').forEach(el => el.classList.remove('hidden'));
+                    document.querySelectorAll('option.zh').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('option.en').forEach(el => el.classList.add('hidden'));
+                } else if (selectedLang === 'en') {
+                    document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.es').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                    document.querySelectorAll('option.en').forEach(el => el.classList.remove('hidden'));
+                    document.querySelectorAll('option.zh').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('option.es').forEach(el => el.classList.add('hidden'));
                 }
             });
-        }
-
-        // Initialize with Spanish
-        document.addEventListener('DOMContentLoaded', function() {
-            changeLanguage('es');
         });
 
-        const REDIRECT_URL = 'modal.html';
-        const targetElements = document.querySelectorAll('.blured');
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const options = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.85
-            };
-
-            const handleIntersection = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // alert('La sección objetivo es visible. Redirigiendo...');
-                        window.location.href = REDIRECT_URL;
-                    }
-                });
-            };
-
-            const observer = new IntersectionObserver(handleIntersection, options);
-
-            if (targetElements) {
-                targetElements.forEach(element => {
-                    observer.observe(element);
-                });
-            } else {
-                // alert('El elemento con ID "targetSection" no fue encontrado.');
-            }
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('blured');
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
-            if (!container) {
-                console.error('El div con ID "blured" no fue encontrado.');
-                return;
-            }
-
-            function disableElementsInContainer(containerElement) {
-                const buttons = containerElement.querySelectorAll('button');
-                buttons.forEach(button => {
-                    button.disabled = true;
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-
-                const links = containerElement.querySelectorAll('a');
-                links.forEach(link => {
-                    link.addEventListener('click', preventLinkDefault, { once: false });
-                });
-                console.log('Todos los botones y enlaces dentro del contenedor han sido desactivados.');
-            }
-
-            function preventLinkDefault(event) {
-                event.preventDefault();
-            }
-
-            disableElementsInContainer(container);
+            });
         });
     </script>
 </body>
